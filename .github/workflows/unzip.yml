@@ -21,8 +21,8 @@ jobs:
 
     - name: Unzip the zip file
       run: |
-        unzip -o sinder.zip -d .
-        rm sinder.zip
+        unzip -o Sinder.zip -d .
+        rm Sinder.zip
 
     - name: Commit unzipped files
       run: |
