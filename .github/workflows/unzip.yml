@@ -1,0 +1,27 @@
+name: Unzip Sinder
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Unzip sinder.zip
+      run: |
+        unzip -o sinder.zip -d .
+        rm sinder.zip
+
+    - name: Commit unzipped files
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        git add .
+        git commit -m "Unzipped sinder.zip"
+        git push
