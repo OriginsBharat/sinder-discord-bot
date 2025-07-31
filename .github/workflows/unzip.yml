@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   unzip:
     runs-on: ubuntu-latest
@@ -13,7 +16,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Unzip sinder.zip
+    - name: Install unzip
+      run: sudo apt-get install unzip
+
+    - name: Unzip the zip file
       run: |
         unzip -o sinder.zip -d .
         rm sinder.zip
